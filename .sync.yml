@@ -1,0 +1,27 @@
+---
+.gitattributes:
+  include:
+    keys/private_key.pkcs7.pem: filter=git-crypt diff=git-crypt export-ignore
+    .git-crypt: export-ignore
+.rubocop.yml:
+  default_configs:
+    inherit_from: ".rubocop_todo.yml"
+    AllCops:
+      NewCops: enable
+      Exclude:
+        - ".modules/**/*"
+Rakefile:
+  default_disabled_lint_checks:
+    - '140chars'
+.gitignore:
+  paths:
+    - .modules/
+    - .resource_types/
+    - bolt-debug.log
+    - .plan_cache.json
+    - .plugin_cache.json
+    - .task_cache.json
+    - .rerun.json
+    - .terraform/
+    - .terraform*lock.hcl
+    - Puppetfile

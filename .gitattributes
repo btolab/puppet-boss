@@ -1,0 +1,7 @@
+*.rb eol=lf
+*.erb eol=lf
+*.pp eol=lf
+*.sh eol=lf
+*.epp eol=lf
+keys/private_key.pkcs7.pem filter=git-crypt diff=git-crypt export-ignore
+.git-crypt export-ignore

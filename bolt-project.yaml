@@ -1,0 +1,6 @@
+---
+name: boss
+apply-settings:
+  show_diff: true
+disable-warnings:
+  - dotted_fact_name
