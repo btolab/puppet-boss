@@ -15,6 +15,14 @@
     {
       "name": "puppetlabs/stdlib",
       "version_requirement": ">= 9.0.0 < 10.0.0"
+    },
+    {
+      "name": "puppetlabs/firewall",
+      "version_requirement": ">= 6.0.0 < 8.0.0"
+    },
+    {
+      "name": "puppet/puppetboard",
+      "version_requirement": ">= 10.1.0 < 11.0.0"
     }
   ],
   "operatingsystem_support": [

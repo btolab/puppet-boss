@@ -1,0 +1,9 @@
+[Unit]
+Description=puppetboard socket
+
+[Socket]
+ListenStream=<%= $bind %>
+SocketUser=<%= $user %>
+
+[Install]
+WantedBy=sockets.target
