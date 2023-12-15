@@ -5,7 +5,7 @@ plan boss::apply (
   Boolean    $noop = false,
 ) {
   get_targets($targets).each() |$target| {
-    $result = $target.apply_prep
+    $result = $target.apply_prep(_run_as => root)
 
     $apply_result = apply($target, _noop => $noop, _catch_errors => true, _run_as => root) {
       include "boss::role::${role}"
