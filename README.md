@@ -12,16 +12,19 @@ Deploy technology stacks with [Puppet Bolt] like a BOSS.
 
 ## Description
 
-TBC
+There can be only one.
 
 ## Setup
 
-TBC
+```
+puppet resource package puppet-bolt ensure=latest
+bolt module install --force
+```
 
 ## Usage
 
 ```
-bolt plan run boss::apply -t puppet.labnodes.com role=puppet::server
+bolt plan run boss::apply -t puppet.labnodes.com role=puppet::server --sudo-password-prompt
 ```
 
 ## Limitations
@@ -30,6 +33,6 @@ Your imagination.
 
 ## Development
 
-TBC
+Is fun.
 
 [Puppet Bolt]: https://github.com/puppetlabs/bolt
