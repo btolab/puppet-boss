@@ -4,3 +4,8 @@ apply-settings:
   show_diff: true
 disable-warnings:
   - dotted_fact_name
+modules:
+  - name: puppetlabs/stdlib
+    version_requirement: '9.x'
+  - git: https://github.com/puppetlabs/puppetlabs-puppetdb
+    ref: main

@@ -1,0 +1,6 @@
+---
+boss::path::sysconfig: /etc/default
+
+boss::profile::openjdk::package_name: 'openjdk-17-jdk-headless'
+
+boss::profile::puppetdb::postgres_version: 16

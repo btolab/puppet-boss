@@ -1,14 +1,19 @@
 {
-  "name": "h0tw1r3-boss",
+  "name": "puppet-boss",
   "version": "0.1.0",
   "author": "Jeffrey Clark",
-  "summary": "",
+  "summary": "Deploy technology stacks with Puppet Bolt like a BOSS",
   "license": "MIT",
-  "source": "",
+  "source": "https://github.com/btolab/puppet-boss",
+  "issues": "https://github.com/btolab/puppet-boss/issues",
   "dependencies": [
     {
       "name": "puppetlabs/puppetdb",
       "version_requirement": ">= 7.1.5 < 8.0.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 9.0.0 < 10.0.0"
     }
   ],
   "operatingsystem_support": [
