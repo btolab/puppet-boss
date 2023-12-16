@@ -4,3 +4,9 @@ boss::path::sysconfig: /etc/sysconfig
 boss::profile::openjdk::package_name: 'java-17-openjdk-headless'
 
 boss::profile::puppetdb::postgres_version: 16
+
+boss::profile::r10k::rugged_build_packages:
+  - cmake
+  - make
+  - gcc
+  - libssh2-devel

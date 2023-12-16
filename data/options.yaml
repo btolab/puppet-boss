@@ -1,0 +1,4 @@
+---
+lookup_options:
+  boss::profile::r10k::sources:
+    convert_to: "Boss::R10k::Sources"

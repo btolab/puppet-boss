@@ -1,0 +1,28 @@
+<%- | Stdlib::Absolutepath $cachedir,
+      Hash $sources,
+      Array $repositories,
+| -%>
+cachedir: '<%= $cachedir %>'
+
+sources:
+<% $sources.each |$source, $params| { -%>
+  <%= $source %>:
+<% $params.each |$param, $value| { -%>
+    <%= $param %>: '<%= $value %>'
+<% } -%>
+<% unless $params['basedir'] { -%>
+    basedir: '/etc/puppetlabs/code/environments'
+<% } -%>
+<% } -%>
+
+git:
+  provider: 'rugged'
+  username: 'git'
+  repositories:
+<% $repositories.each |$repo| { -%>
+    - remote: <%= $repo['remote'] %>
+<% $repo.each |$key, $value| { %><% if $key != 'remote' { -%>
+      <%= $key %>: <%= $value %>
+<% } -%>
+<% } -%>
+<% } -%>

@@ -21,15 +21,6 @@ class boss::profile::puppetserver::config {
     target => '/opt/puppetlabs/puppet/bin/eyaml',
   }
 
-  package { 'gem-r10k':
-    name     => 'r10k',
-    provider => 'puppet_gem',
-  }
-  -> file { '/opt/puppetlabs/bin/r10k':
-    ensure => link,
-    target => '/opt/puppetlabs/puppet/bin/r10k',
-  }
-
   augeas { 'puppetserver-syslog':
     incl    => '/etc/puppetlabs/puppetserver/logback.xml',
     lens    => 'xml.lns',
