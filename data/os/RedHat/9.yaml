@@ -1,3 +1,0 @@
----
-# TODO remove when RHEL9 support is added to puppetboard module
-puppetboard::python_version: '3.9'

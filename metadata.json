@@ -4,9 +4,9 @@
   "author": "Jeffrey Clark",
   "summary": "Deploy technology stacks with Puppet Bolt like a BOSS",
   "license": "MIT",
-  "project_page": "https://github.com/btolab/puppet-boss",
   "source": "https://github.com/btolab/puppet-boss.git",
-  "issues": "https://github.com/btolab/puppet-boss/issues",
+  "project_page": "https://github.com/btolab/puppet-boss",
+  "issues_url": "https://github.com/btolab/puppet-boss/issues",
   "dependencies": [
     {
       "name": "puppetlabs/puppetdb",

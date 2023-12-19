@@ -13,4 +13,6 @@ modules:
   - name: puppet/python
     version_requirement: '7.x'
   - name: puppet/puppetboard
+    git: https://github.com/h0tw1r3/puppet-puppetboard
+    ref: pre-release
     resolve: false
