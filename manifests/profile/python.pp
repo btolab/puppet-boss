@@ -1,8 +1,14 @@
 # manage system python
 #
-class boss::profile::python {
+# @param version
+#
+class boss::profile::python (
+  String $version = '3',
+) {
+  $_version = regsubst($version, '^(\d+)\.?(\d+)?.*', '\1\2')
+
   class { 'python':
-    version         => '3',
+    version         => $_version,
     pip             => 'present',
     dev             => 'present',
     venv            => 'present',
@@ -14,4 +20,6 @@ class boss::profile::python {
   package { 'gunicorn':
     name => $python::gunicorn_package_name,
   }
+
+  Yumrepo <| tag == 'epel' |> -> Package['gunicorn']
 }
