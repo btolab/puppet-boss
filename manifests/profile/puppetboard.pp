@@ -18,6 +18,13 @@ class boss::profile::puppetboard {
     puppetdb_ssl_verify => "${ssl_dir}/certs/ca.pem",
     puppetdb_cert       => "${ssl_dir}/certs/${host}.pem",
   }
+  -> python::pip { 'gunicorn':
+    virtualenv => $puppetboard::virtualenv_dir,
+    proxy      => $puppetboard::python_proxy,
+    owner      => $puppetboard::user,
+    group      => $puppetboard::group,
+    require    => Python::Pyvenv[$puppetboard::virtualenv_dir],
+  }
   ~> systemd::unit_file { 'puppetboard.service':
     content => epp("${module_name}/profile/puppetboard/gunicorn.service", {
         user       => $puppetboard::user,

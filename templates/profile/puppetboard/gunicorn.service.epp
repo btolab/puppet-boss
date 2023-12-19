@@ -15,7 +15,7 @@ User=<%= $user %>
 Group=<%= $group %>
 WorkingDirectory=<%= $virtualenv %>
 Environment=PUPPETBOARD_SETTINGS=<%= $settings %>
-ExecStart=<%= $virtualenv %>/bin/python3 /usr/bin/gunicorn -b <%= $bind %> puppetboard.app:app
+ExecStart=<%= $virtualenv %>/bin/gunicorn -b <%= $bind %> puppetboard.app:app
 ExecReload=/bin/kill -s HUP $MAINPID
 KillMode=mixed
 TimeoutStopSec=5

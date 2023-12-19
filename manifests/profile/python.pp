@@ -14,12 +14,4 @@ class boss::profile::python (
     venv            => 'present',
     manage_gunicorn => false,
   }
-
-  # work-around python module unable to manage the gunicorn package
-  # without managing some weird debian specific service framework
-  package { 'gunicorn':
-    name => $python::gunicorn_package_name,
-  }
-
-  Yumrepo <| tag == 'epel' |> -> Package['gunicorn']
 }
