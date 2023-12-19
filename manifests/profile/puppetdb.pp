@@ -8,16 +8,32 @@
 #   set java Xms argument to value
 # @param version
 #   version of puppetdb to install
+# @param manage_dnf
+#   disable vendor postgresql module
 #
 class boss::profile::puppetdb (
   Integer                  $postgres_version,
   Pattern[/^[0-9]+[kmg]$/] $java_mx = '2048m',
   Pattern[/^[0-9]+[kmg]$/] $java_ms = '256m',
   String                   $version = 'latest',
+  Boolean                  $manage_dnf = false,
 ) {
   require boss::profile::openjdk
 
   $puppet_confdir = '/etc/puppetlabs/puppet'
+
+  # puppetdb module doesn't expose the postgresql::globals parameter
+  if $manage_dnf {
+    package { 'disable-dnf-postgresql-module':
+      ensure   => 'disabled',
+      name     => 'postgresql',
+      provider => 'dnfmodule',
+    }
+
+    Yumrepo <| tag == 'postgresql::repo' |>
+    -> Package['disable-dnf-postgresql-module']
+    -> Package <| tag == 'postgresql' |>
+  }
 
   class { 'puppetdb::globals':
     version        => $version,
