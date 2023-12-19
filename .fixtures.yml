@@ -3,4 +3,7 @@
 ---
 fixtures:
   forge_modules:
-#     stdlib: "puppetlabs/stdlib"
+    facts: 'puppetlabs/facts'
+    puppet_agent: 'puppetlabs/puppet_agent'
+  repositories:
+    provision: 'https://github.com/puppetlabs/provision.git'

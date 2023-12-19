@@ -8,8 +8,13 @@
     inherit_from: ".rubocop_todo.yml"
     AllCops:
       NewCops: enable
+      Include:
+        - "rakelib/*.rake"
       Exclude:
         - ".modules/**/*"
+    Style/SingleLineMethods:
+      Exclude:
+        - "rakelib/test.rake"
 Rakefile:
   default_disabled_lint_checks:
     - '140chars'
@@ -25,3 +30,6 @@ Rakefile:
     - .terraform/
     - .terraform*lock.hcl
     - Puppetfile
+.pdkignore:
+  paths:
+    - /provision.yaml

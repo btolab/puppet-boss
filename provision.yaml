@@ -1,0 +1,19 @@
+---
+default:
+  provisioner: docker
+  images:
+    - litmusimage/ubuntu:22.04
+yum:
+  provisioner: docker
+  images:
+    - litmusimage/almalinux:8
+apt:
+  provisioner: docker
+  images:
+    - litmusimage/debian:11
+ci:
+  provisioner: docker
+  images:
+    - litmusimage/almalinux:8
+    - litmusimage/debian:11
+    - litmusimage/ubuntu:22.04
