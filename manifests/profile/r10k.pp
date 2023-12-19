@@ -9,6 +9,11 @@ class boss::profile::r10k (
   Array[String]        $rugged_build_packages,
   Stdlib::Absolutepath $cachedir = '/var/cache/r10k',
 ) {
+  if $facts['os']['family'] == 'RedHat' {
+    include epel
+    Yumrepo <| tag == 'epel' |> -> Package[$rugged_build_packages]
+  }
+
   stdlib::ensure_packages($rugged_build_packages)
 
   $r10k_sources = $sources.reduce({}) |$memo, $v| {
