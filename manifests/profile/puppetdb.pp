@@ -2,21 +2,21 @@
 #
 # @param postgres_version
 #   major version of postgres to install
-# @param java_mx
-#   set java Xmx argument to value
-# @param java_ms
-#   set java Xms argument to value
 # @param version
 #   version of puppetdb to install
 # @param manage_dnf
 #   disable vendor postgresql module
+# @param java_mx
+#   set java Xmx argument to value
+# @param java_ms
+#   set java Xms argument to value
 #
 class boss::profile::puppetdb (
-  Integer                  $postgres_version,
-  Pattern[/^[0-9]+[kmg]$/] $java_mx = '2048m',
-  Pattern[/^[0-9]+[kmg]$/] $java_ms = '256m',
-  String                   $version = 'latest',
-  Boolean                  $manage_dnf = false,
+  Integer $postgres_version,
+  String  $version = 'latest',
+  Boolean $manage_dnf = false,
+  Optional[Pattern[/^[0-9]+[kmg]$/]] $java_ms = undef,
+  Optional[Pattern[/^[0-9]+[kmg]$/]] $java_mx = undef,
 ) {
   require boss::profile::openjdk
 
@@ -40,16 +40,18 @@ class boss::profile::puppetdb (
     puppet_confdir => $puppet_confdir,
   }
 
+  $java_args = ['mx', 'ms'].reduce({}) |$memo, $v| {
+    $value = getvar("java_${v}")
+    if $value { $memo + { "-X${v}" => $value } } else { $memo }
+  }
+
   class { 'puppetdb':
     listen_address          => '0.0.0.0',
     disable_update_checking => true,
     postgres_version        => String($postgres_version),
     open_listen_port        => true,
     open_ssl_listen_port    => true,
-    java_args               => {
-      '-Xmx' => $java_mx,
-      '-Xms' => $java_ms,
-    },
+    java_args               => $java_args,
   }
   -> class { 'puppetdb::master::config':
     create_puppet_service_resource => false,

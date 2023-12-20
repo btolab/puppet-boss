@@ -2,13 +2,15 @@
 #
 # @api private
 class boss::profile::puppetserver::config {
-  $java_mx = $boss::profile::puppetserver::java_mx
-  $java_ms = $boss::profile::puppetserver::java_ms
+  $java_mem = ['mx', 'ms'].reduce([]) |$memo, $v| {
+    $value = getvar("boss::profile::puppetserver::java_${v}")
+    if $value { $memo + ["-X${v}${value}"] } else { $memo }
+  }
 
   augeas { 'puppetserver-environment':
     context => "/files${lookup('boss::path::sysconfig')}/puppetserver",
     changes => [
-      "set JAVA_ARGS '\"-Xms${java_ms} -Xmx${java_mx} -XX:ReservedCodeCacheSize=512m -Djruby.logger.class=com.puppetlabs.jruby_utils.jruby.Slf4jLogger\"'",
+      "set JAVA_ARGS '\"${java_mem.join(' ')} -XX:ReservedCodeCacheSize=512m -Djruby.logger.class=com.puppetlabs.jruby_utils.jruby.Slf4jLogger\"'",
     ],
   }
 
