@@ -5,5 +5,8 @@ fixtures:
   forge_modules:
     facts: 'puppetlabs/facts'
     puppet_agent: 'puppetlabs/puppet_agent'
+    augeas_core: 'puppetlabs/augeas_core'
+    cron_core: 'puppetlabs/cron_core'
+    yumrepo_core: 'puppetlabs/yumrepo_core'
   repositories:
     provision: 'https://github.com/puppetlabs/provision.git'
