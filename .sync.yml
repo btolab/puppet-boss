@@ -33,3 +33,5 @@ Rakefile:
 .pdkignore:
   paths:
     - /provision.yaml
+spec/default_facts.yml:
+  delete: true

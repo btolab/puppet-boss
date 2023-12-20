@@ -9,18 +9,19 @@ include RspecPuppetFacts
 # end
 def override_facts(base_facts, **overrides)
   facts = Marshal.load(Marshal.dump(base_facts))
-  apply_overrides!(facts, overrides, true)
+  apply_overrides!(facts, overrides)
   facts
 end
 
 # A private helper to override_facts
 def apply_overrides!(facts, overrides, enforce_strings)
   overrides.each do |key, value|
-    # Nested facts are strings
-    key = key.to_s if enforce_strings
+    # Crazy...
+    # Top level are symbols, Nested facts are strings
+    key = enforce_strings ? key.to_s : key.to_sym
 
     if value.is_a?(Hash)
-      facts[key] = {} unless facts.key?(key)
+      facts[key] ||= {}
       apply_overrides!(facts[key], value, true)
     else
       facts[key] = value
