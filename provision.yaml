@@ -6,7 +6,7 @@ default:
 yum:
   provisioner: docker
   images:
-    - litmusimage/almalinux:8
+    - ghcr.io/h0tw1r3/litmusimage/almalinux:9
 apt:
   provisioner: docker
   images:
@@ -15,5 +15,6 @@ ci:
   provisioner: docker
   images:
     - litmusimage/almalinux:8
+    - ghcr.io/h0tw1r3/litmusimage/almalinux:9
     - litmusimage/debian:11
     - litmusimage/ubuntu:22.04
