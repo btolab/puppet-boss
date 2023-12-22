@@ -4,9 +4,11 @@ boss::profile::r10k::sources:
     remote: git@code.turdhub.com:h0tw1r3/control-repo.git
     private_key: |
       -----BEGIN OPENSSH PRIVATE KEY-----
-      b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-      QyNTUxOQAAACAS1uasZ0onQzancNrjwmy4j12hWrhekjArUnH+ss2zvQAAAJjGidiBxonY
-      gQAAAAtzc2gtZWQyNTUxOQAAACAS1uasZ0onQzancNrjwmy4j12hWrhekjArUnH+ss2zvQ
-      AAAEABDaPDpXMHKkVUOHCBpGqzKQvTFMsg8mPAJwG5+5I+NxLW5qxnSidDNqdw2uPCbLiP
-      XaFauF6SMCtScf6yzbO9AAAAEXJvb3RAcHVwcGV0LWFsbWE5AQIDBA==
+      b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAaAAAABNlY2RzYS
+      1zaGEyLW5pc3RwMjU2AAAACG5pc3RwMjU2AAAAQQTCJH+GblySm4TuUzt7CIZ5zhWowYlO
+      p/a156N/1am6WeQuPgK9mw9dZFw7LVwPVOiUHsJ8rr8Bm4ePCZU7Ks7ZAAAAsHDBVL5wwV
+      S+AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMIkf4ZuXJKbhO5T
+      O3sIhnnOFajBiU6n9rXno3/VqbpZ5C4+Ar2bD11kXDstXA9U6JQewnyuvwGbh48JlTsqzt
+      kAAAAgJE8kJjLDFyBKWhZV+Ug43rw5z3B7fdvIah36u8U0OL4AAAARcm9vdEBiMmRlYjli
+      M2Q0ZjIBAgMEBQYH
       -----END OPENSSH PRIVATE KEY-----
