@@ -1,0 +1,5 @@
+---
+boss::profile::python::version: '3.10'
+boss::profile::puppetboard::python_version: '3.10'
+boss::profile::python::manage_pip_package: false
+boss::profile::python::manage_venv_package: false
