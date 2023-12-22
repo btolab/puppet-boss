@@ -9,6 +9,8 @@ class boss::profile::r10k (
   Array[String]        $rugged_build_packages,
   Stdlib::Absolutepath $cachedir = '/var/cache/r10k',
 ) {
+  require boss::profile::puppetserver::install
+
   if $facts['os']['family'] == 'RedHat' {
     include epel
     Yumrepo <| tag == 'epel' |> -> Package[$rugged_build_packages]

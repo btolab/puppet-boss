@@ -4,13 +4,14 @@ class boss::profile::puppetboard (
   Optional[String] $python_version = undef,
 ) {
   require boss::profile::python
+  require boss::profile::puppetserver::install
 
   $host = $facts['networking']['fqdn']
   $ssl_dir = '/etc/puppetlabs/puppet/ssl'
 
   class { 'puppetboard':
     python_version      => $python_version,
-    python_systempkgs   => true,
+    python_systempkgs   => false,
     manage_virtualenv   => false,
     secret_key          => stdlib::fqdn_rand_string(32),
     enable_catalog      => true,
