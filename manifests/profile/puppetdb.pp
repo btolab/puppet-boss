@@ -15,8 +15,8 @@ class boss::profile::puppetdb (
   Integer $postgres_version,
   String  $version = 'latest',
   Boolean $manage_dnf = false,
-  Optional[Pattern[/^[0-9]+[kmg]$/]] $java_ms = undef,
-  Optional[Pattern[/^[0-9]+[kmg]$/]] $java_mx = undef,
+  Optional[Pattern[/^[0-9]+[kmg]$/]] $java_ms = '1g',
+  Optional[Pattern[/^[0-9]+[kmg]$/]] $java_mx = '1g',
 ) {
   require boss::profile::openjdk
 
