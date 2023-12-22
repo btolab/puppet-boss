@@ -4,6 +4,10 @@
 class boss::profile::puppetserver::install {
   require boss::profile::openjdk
 
+  Host <| ip == $facts['networking']['ip'] |> {
+    host_aliases +> 'puppet',
+  }
+
   # workaround puppetserver pulling in a very old java
   if ($facts['os']['family'] in ['Suse', 'RedHat']) {
     boss::fakeprovide { 'openjdk18':
