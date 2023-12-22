@@ -4,7 +4,6 @@ class boss::profile::puppetboard (
   Optional[String] $python_version = undef,
 ) {
   require boss::profile::python
-  require boss::profile::puppetserver::install
 
   $host = $facts['networking']['fqdn']
   $ssl_dir = '/etc/puppetlabs/puppet/ssl'
@@ -21,6 +20,7 @@ class boss::profile::puppetboard (
     puppetdb_key        => "${ssl_dir}/private_keys/${host}.pem",
     puppetdb_ssl_verify => "${ssl_dir}/certs/ca.pem",
     puppetdb_cert       => "${ssl_dir}/certs/${host}.pem",
+    require             => Package['puppetserver'],
   }
   -> python::pip { 'gunicorn':
     virtualenv => $puppetboard::virtualenv_dir,

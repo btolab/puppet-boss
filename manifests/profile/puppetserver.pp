@@ -11,9 +11,9 @@ class boss::profile::puppetserver (
   Optional[Pattern[/^[0-9]+[kmg]$/]] $java_ms = '1g',
   Optional[Pattern[/^[0-9]+[kmg]$/]] $java_mx = '1g',
 ) {
-  include "${name}::install"
-  include "${name}::config"
-  include "${name}::bootstrap"
+  contain "${name}::install"
+  contain "${name}::config"
+  contain "${name}::bootstrap"
   include "${name}::service"
 
   Class["${name}::install"]
