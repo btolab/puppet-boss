@@ -6,6 +6,7 @@ fixtures:
     facts: 'puppetlabs/facts'
     puppet_agent: 'puppetlabs/puppet_agent'
     augeas_core: 'puppetlabs/augeas_core'
+    host_core: 'puppetlabs/host_core'
     cron_core: 'puppetlabs/cron_core'
     yumrepo_core: 'puppetlabs/yumrepo_core'
   repositories:
