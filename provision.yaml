@@ -11,6 +11,10 @@ apt:
   provisioner: docker
   images:
     - litmusimage/debian:11
+sles:
+  provisioner: docker
+  images:
+    - h0tw1r3/sles:15
 ci:
   provisioner: docker
   images:
