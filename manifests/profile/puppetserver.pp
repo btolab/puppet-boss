@@ -8,8 +8,8 @@
 #
 class boss::profile::puppetserver (
   String $ensure = 'latest',
-  Optional[Pattern[/^[0-9]+[kmg]$/]] $java_ms = '1g',
-  Optional[Pattern[/^[0-9]+[kmg]$/]] $java_mx = '1g',
+  Pattern[/^[0-9]+[kmg]$/] $java_ms = '1g',
+  Pattern[/^[0-9]+[kmg]$/] $java_mx = '1g',
 ) {
   contain "${name}::install"
   contain "${name}::config"

@@ -2,7 +2,7 @@
 #
 # @param provide
 #   what to provide
-# @param extra
+# @param extras
 #   extra provides to add to package
 define boss::fakeprovide (
   String $provide = $title,
@@ -19,14 +19,14 @@ define boss::fakeprovide (
   stdlib::ensure_packages($required_packages)
 
   ensure_resource('file', '/usr/bin/fakeprovide', {
-    mode    => '0755',
-    content => file('boss/profile/fakeprovide'),
-    require => Package[$required_packages],
+      mode    => '0755',
+      content => file('boss/profile/fakeprovide'),
+      require => Package[$required_packages],
   })
 
   exec { "build-fakeprovide-${title}":
     command => "/usr/bin/fakeprovide -v ${package_version} ${extra_provides} ${provide}",
-    cwd     => "/var/tmp",
+    cwd     => '/var/tmp',
     creates => [
       "/var/tmp/${package_name}.el${facts['os']['release']['major']}.noarch.rpm",
       "/var/tmp/${package_name}.noarch.rpm",
@@ -35,6 +35,6 @@ define boss::fakeprovide (
   }
   ~> exec { "install-fakeprovide-${title}":
     command => "/usr/bin/env rpm -Uvh --force --oldpackage /var/tmp/${package_name}.*noarch.rpm",
-    unless  => "/usr/bin/env rpm -q ${package_name}"
+    unless  => "/usr/bin/env rpm -q ${package_name}",
   }
 }

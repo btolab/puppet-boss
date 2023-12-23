@@ -1,6 +1,11 @@
 # manage system python
 #
 # @param version
+#   pass-through parameter for the python module
+# @param manage_pip_package
+#   installing a system pip is generally discouraged
+# @param manage_venv_package
+#   if venv support is bundled with python, set to false in hiera
 #
 class boss::profile::python (
   String $version = '3',
