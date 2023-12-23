@@ -1,5 +1,8 @@
 # manage puppetboard
 #
+# @param python_version
+#   set if puppetboard does not have the correct version or support for
+#   the platform being deployed
 class boss::profile::puppetboard (
   Optional[String] $python_version = undef,
 ) {
