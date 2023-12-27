@@ -43,7 +43,7 @@ Puppet::Functions.create_function(:'boss::url_parse', Puppet::Functions::Interna
 
     Hash[['scheme', 'userinfo', 'user', 'password', 'host', 'port', 'path', 'query'].map { |var|
       val = parsed.send(var)
-      (val.nil? || val.empty?) ? nil : [ var, val ]
+      (val.nil? || val.to_s.empty?) ? nil : [ var, val ]
     }.compact]
   end
 end
