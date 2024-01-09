@@ -1,4 +1,10 @@
 ---
+lookup_options:
+  boss::profile::base::os::repos:
+    merge: hash
+
+boss::puppet_major_version: 8
+
 boss::profile::r10k::sources:
   default:
     remote: git@code.turdhub.com:h0tw1r3/control-repo.git
