@@ -3,8 +3,10 @@
 # @param python_version
 #   set if puppetboard does not have the correct version or support for
 #   the platform being deployed
+# @param manage_firewall
 class boss::profile::puppetboard (
   Optional[String] $python_version = undef,
+  Boolean $manage_firewall = true,
 ) {
   require boss::profile::python
 
@@ -44,9 +46,11 @@ class boss::profile::puppetboard (
     active  => true,
   }
 
-  firewall { '1000 accept - puppetboard':
-    dport  => 9090,
-    proto  => 'tcp',
-    action => 'accept',
+  if $manage_firewall {
+    firewall { '1000 accept - puppetboard':
+      dport  => 9090,
+      proto  => 'tcp',
+      action => 'accept',
+    }
   }
 }

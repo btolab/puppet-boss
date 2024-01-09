@@ -10,6 +10,7 @@
 #   set java Xmx argument to value
 # @param java_ms
 #   set java Xms argument to value
+# @param manage_firewall
 #
 class boss::profile::puppetdb (
   Integer $postgres_version,
@@ -17,6 +18,7 @@ class boss::profile::puppetdb (
   Boolean $manage_dnf = false,
   Pattern[/^[0-9]+[kmg]$/] $java_ms = '1g',
   Pattern[/^[0-9]+[kmg]$/] $java_mx = '1g',
+  Boolean $manage_firewall = true,
 ) {
   realize(Boss::Repository['puppet'])
   require boss::profile::openjdk
@@ -53,6 +55,7 @@ class boss::profile::puppetdb (
     open_listen_port        => true,
     open_ssl_listen_port    => true,
     java_args               => $java_args,
+    manage_firewall         => $manage_firewall,
   }
   -> class { 'puppetdb::master::config':
     create_puppet_service_resource => false,

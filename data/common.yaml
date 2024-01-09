@@ -18,3 +18,8 @@ boss::profile::r10k::sources:
       kAAAAgJE8kJjLDFyBKWhZV+Ug43rw5z3B7fdvIah36u8U0OL4AAAARcm9vdEBiMmRlYjli
       M2Q0ZjIBAgMEBQYH
       -----END OPENSSH PRIVATE KEY-----
+
+boss::profile::base::manage_firewall: true
+
+boss::profile::puppetboard::manage_firewall: "%{alias('boss::profile::base::manage_firewall')}"
+boss::profile::puppetdb::manage_firewall: "%{alias('boss::profile::base::manage_firewall')}"
