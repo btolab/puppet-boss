@@ -1,0 +1,2 @@
+---
+boss::profile::base::manage_firewall: false
