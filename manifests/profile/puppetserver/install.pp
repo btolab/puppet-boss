@@ -2,6 +2,8 @@
 #
 # @api private
 class boss::profile::puppetserver::install {
+  realize(Boss::Repository['puppet'])
+
   require boss::profile::openjdk
 
   Host <| ip == $facts['networking']['ip'] |> {

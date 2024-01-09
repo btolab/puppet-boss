@@ -18,6 +18,7 @@ class boss::profile::puppetdb (
   Pattern[/^[0-9]+[kmg]$/] $java_ms = '1g',
   Pattern[/^[0-9]+[kmg]$/] $java_mx = '1g',
 ) {
+  realize(Boss::Repository['puppet'])
   require boss::profile::openjdk
 
   $puppet_confdir = '/etc/puppetlabs/puppet'
