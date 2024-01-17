@@ -9,6 +9,6 @@ boss::profile::r10k::rugged_build_packages:
   - cmake
   - make
   - gcc
-  - libssh2-devel
+  - zlib-devel
 
 boss::profile::puppetdb::manage_dnf: true

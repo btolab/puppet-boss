@@ -16,3 +16,4 @@ modules:
     git: https://github.com/h0tw1r3/puppet-puppetboard
     ref: pre-release
     resolve: false
+  - puppet/archive

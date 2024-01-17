@@ -10,7 +10,7 @@ boss::profile::r10k::rugged_build_packages:
   - make
   - gcc
   - pkg-config
-  - libssh2-1-dev
+  - zlib1g-dev
 
 boss::profile::base::os::packages:
   - apt-transport-https
