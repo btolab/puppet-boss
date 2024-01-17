@@ -60,13 +60,13 @@ class boss::profile::r10k (
   # pin older gems for ruby 2.7
   if $facts['puppetversion'] =~ /^7/ {
     package { 'gem-faraday':
-      name     => 'faraday',
       ensure   => '2.8.1',
+      name     => 'faraday',
       provider => 'puppet_gem',
     }
     -> package { 'gem-faraday-net_http':
-      name     => 'faraday-net_http',
       ensure   => '3.0.2',
+      name     => 'faraday-net_http',
       provider => 'puppet_gem',
       before   => Package['gem-r10k'],
     }
@@ -90,13 +90,13 @@ class boss::profile::r10k (
     require     => Package[$rugged_build_packages],
   }
   -> archive { '/var/tmp/libgit2-1.7.1.tar.gz':
-    source       => 'https://github.com/libgit2/libgit2/archive/refs/tags/v1.7.1.tar.gz',
+    source        => 'https://github.com/libgit2/libgit2/archive/refs/tags/v1.7.1.tar.gz',
     checksum_type => 'sha256',
     checksum      => '17d2b292f21be3892b704dddff29327b3564f96099a1c53b00edc23160c71327',
-    cleanup      => true,
-    creates      => '/var/tmp/libgit2-1.7.1',
-    extract      => true,
-    extract_path => '/var/tmp',
+    cleanup       => true,
+    creates       => '/var/tmp/libgit2-1.7.1',
+    extract       => true,
+    extract_path  => '/var/tmp',
   }
   ~> exec { 'puppet-libgit2':
     path        => ['/opt/puppetlabs/puppet/bin', '/usr/bin', '/bin'],
