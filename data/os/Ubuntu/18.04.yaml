@@ -1,0 +1,2 @@
+---
+boss::profile::puppetdb::postgres_version: 14
