@@ -4,9 +4,9 @@ plan boss::apply (
   String     $role,
   Boolean    $noop = false,
 ) {
-  get_targets($targets).each() |$target| {
-    $result = $target.apply_prep(_run_as => root)
+  $targets.apply_prep(_run_as => 'root')
 
+  get_targets($targets).each() |$target| {
     $apply_result = apply($target, _noop => $noop, _catch_errors => true, _run_as => root) {
       include "boss::role::${role}"
     }

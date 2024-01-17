@@ -21,9 +21,9 @@ boss::profile::base::os::packages:
 
 boss::profile::base::os::repos:
   puppet:
-    list: "puppet%{lookup('boss::puppet_major_version')}-release"
+    list: "puppet%{facts.puppet.major}-release"
     url: http://apt.puppet.com
-    release: "puppet%{lookup('boss::puppet_major_version')}"
+    release: "puppet%{facts.puppet.major}"
     key_url: http://apt.puppet.com/DEB-GPG-KEY-puppet-20250406
     key_checksum: 4d5a9c73f97235eebe8c69f728aa2efcc8e1ee02282f972efdbbbd3a430be454
     armor: true

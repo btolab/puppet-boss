@@ -7,13 +7,20 @@ disable-warnings:
 modules:
   - name: puppetlabs/stdlib
     version_requirement: '9.x'
+  - puppet/systemd
+  - puppetlabs/inifile
+  - puppetlabs/postgresql
   - name: puppetlabs/firewall
-  - git: https://github.com/puppetlabs/puppetlabs-puppetdb
+    version_requirement: '6.0.0'
+    resolve: false
+  - name: puppetlabs/puppetdb
+    git: https://github.com/puppetlabs/puppetlabs-puppetdb
     ref: main
-  - name: puppet/python
-    version_requirement: '7.x'
+    resolve: false
+  - puppet/python
   - name: puppet/puppetboard
     git: https://github.com/h0tw1r3/puppet-puppetboard
     ref: pre-release
     resolve: false
+  - puppetlabs/puppet_agent
   - puppet/archive

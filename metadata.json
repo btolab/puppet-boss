@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "name": "puppetlabs/puppetdb",
-      "version_requirement": ">= 7.1.5 < 8.0.0"
+      "version_requirement": ">= 7.1.5 < 9.0.0"
     },
     {
       "name": "puppetlabs/stdlib",
