@@ -1,2 +1,3 @@
 ---
 boss::profile::base::manage_firewall: false
+boss::profile::puppetboard::manage_firewall: false
