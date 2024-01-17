@@ -127,5 +127,4 @@ define boss::repository::apt (
     require     => Package['ca-certificates'],
     refreshonly => true,
   }
-  -> @boss::repository { $title: }
 }

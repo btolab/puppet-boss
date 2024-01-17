@@ -9,8 +9,9 @@ class boss::profile::base::os (
   stdlib::ensure_packages($packages)
 
   $repos.each |$repo, $params| {
-    @Resource["boss::repository::${facts['package_provider']}"] { $repo:
-      * => $params,
+    @boss::repository { $repo:
+      params   => $params,
+      provider => $facts['package_provider'],
     }
 
     if $params['realize'] {
