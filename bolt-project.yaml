@@ -24,3 +24,4 @@ modules:
     resolve: false
   - puppetlabs/puppet_agent
   - puppet/archive
+  - h0tw1r3/sysctl

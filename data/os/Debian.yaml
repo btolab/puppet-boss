@@ -19,6 +19,25 @@ boss::profile::base::os::packages:
   - gpg
   - lsb-release
 
+boss::profile::incus::additional_packages:
+  - lvm2
+  - btrfs-progs
+
+boss::profile::incus::sysctl:
+  fs.aio-max-nr: 524288
+  fs.inotify.max_queued_events: 1048576
+  fs.inotify.max_user_instances: 1048576
+  fs.inotify.max_user_watches: 1048576
+  kernel.dmesg_restrict: 1
+  kernel.keys.maxbytes: 2000000
+  kernel.keys.maxkeys: 2000
+  kernel.unprivileged_userns_clone: 1
+  net.core.bpf_jit_limit: 1000000000
+  net.ipv4.neigh.default.gc_thresh3: 8192
+  net.ipv6.neigh.default.gc_thresh3: 8192
+  user.max_user_namespaces: 256331
+  vm.max_map_count: 262144
+
 boss::profile::base::os::repos:
   puppet:
     list: "puppet%{facts.puppet.major}-release"
@@ -26,4 +45,10 @@ boss::profile::base::os::repos:
     release: "puppet%{facts.puppet.major}"
     key_url: http://apt.puppet.com/DEB-GPG-KEY-puppet-20250406
     key_checksum: 4d5a9c73f97235eebe8c69f728aa2efcc8e1ee02282f972efdbbbd3a430be454
+    armor: true
+  zabbly:
+    url: https://pkgs.zabbly.com/incus/stable
+    release: main
+    key_url: https://pkgs.zabbly.com/key.asc
+    key_checksum: 6b0ca4f477a86bc059b4c370d210e2fa1a18580f9b56dd6c1f1d39aca738a9dc
     armor: true
