@@ -7,10 +7,12 @@ class boss::profile::puppetserver::config {
     if $value { $memo + ["-X${v}${value}"] } else { $memo }
   }
 
+  $java_args = getvar('boss::profile::puppetserver::java_args')
+
   augeas { 'puppetserver-environment':
     context => "/files${lookup('boss::path::sysconfig')}/puppetserver",
     changes => [
-      "set JAVA_ARGS '\"${java_mem.join(' ')} -XX:ReservedCodeCacheSize=512m -Djruby.logger.class=com.puppetlabs.jruby_utils.jruby.Slf4jLogger\"'",
+      "set JAVA_ARGS '\"${java_mem.join(' ')} ${java_args} -Djruby.logger.class=com.puppetlabs.jruby_utils.jruby.Slf4jLogger\"'",
     ],
   }
 

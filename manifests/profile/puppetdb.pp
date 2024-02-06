@@ -16,7 +16,7 @@ class boss::profile::puppetdb (
   Integer $postgres_version,
   String  $version = 'latest',
   Boolean $manage_dnf = false,
-  Pattern[/^[0-9]+[kmg]$/] $java_ms = '1g',
+  Pattern[/^[0-9]+[kmg]$/] $java_ms = '128m',
   Pattern[/^[0-9]+[kmg]$/] $java_mx = '1g',
   Boolean $manage_firewall = true,
 ) {
