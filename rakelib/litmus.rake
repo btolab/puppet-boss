@@ -3,13 +3,14 @@
 litmus_cleanup = false
 at_exit { Rake::Task['litmus:tear_down'].invoke if litmus_cleanup }
 
-desc "Provision machines, run acceptance tests, and tear down\n(defaults: key=default, tag=nil)"
-task :acceptance, [:key, :tag] do |_task, args|
-  args.with_defaults(key: 'default', tag: nil)
+desc "Provision machines, run acceptance tests, and tear down\n(defaults: group=default, tag=nil)"
+task :acceptance, [:group, :tag] do |_task, args|
+  args.with_defaults(group: 'default', tag: nil)
   Rake::Task['spec_prep'].invoke
-  Rake::Task['litmus:provision_list'].invoke args[:key]
+  litmus_cleanup = ENV.fetch('LITMUS_teardown', 'true').downcase.match?(%r{(true|auto)})
+  Rake::Task['litmus:provision_list'].invoke args[:group]
   Rake::Task['litmus:install_agent'].invoke
-  Rake::Task['litmus:install_modules_from_fixtures'].invoke
+  Rake::Task['litmus:install_modules'].invoke
   begin
     Rake::Task['litmus:acceptance:parallel'].invoke args[:tag]
   rescue SystemExit
@@ -19,7 +20,7 @@ task :acceptance, [:key, :tag] do |_task, args|
 end
 
 namespace :litmus do
-  desc "Run tests against all machines in the inventory file\n(defaults: tag=nil)"
+  desc "Run tests against all nodes in the litmus inventory\n(defaults: tag=nil)"
   task :acceptance, [:tag] do |_task, args|
     args.with_defaults(tag: nil)
 
@@ -36,11 +37,4 @@ namespace :litmus do
     Rake::Task['spec_prep'].invoke
     Rake::Task['litmus:install_modules_from_directory'].invoke(nil, nil, nil, !args[:resolve_dependencies])
   end
-end
-
-Rake::Task['litmus:provision'].enhance do
-  litmus_cleanup = ENV.fetch('LITMUS_teardown', 'true').downcase.match?(%r{(true|auto)})
-end
-Rake::Task['litmus:provision_list'].enhance do
-  litmus_cleanup = ENV.fetch('LITMUS_teardown', 'true').downcase.match?(%r{(true|auto)})
 end
