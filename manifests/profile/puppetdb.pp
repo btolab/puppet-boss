@@ -27,14 +27,13 @@ class boss::profile::puppetdb (
 
   # puppetdb module doesn't expose the postgresql::globals parameter
   if $manage_dnf {
-    package { 'disable-dnf-postgresql-module':
-      ensure   => 'disabled',
-      name     => 'postgresql',
-      provider => 'dnfmodule',
+    exec { 'disable-dnf-postgresql-module':
+      command => '/usr/bin/env dnf module disable -d 0 -e 1 -y postgresql',
+      onlyif  => '/usr/bin/env dnf module --enabled list postgresql',
     }
 
     Yumrepo <| tag == 'postgresql::repo' |>
-    -> Package['disable-dnf-postgresql-module']
+    -> Exec['disable-dnf-postgresql-module']
     -> Package <| tag == 'postgresql' |>
   }
 
