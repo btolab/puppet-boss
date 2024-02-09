@@ -7,7 +7,6 @@
   default_configs:
     inherit_from: ".rubocop_todo.yml"
     AllCops:
-      NewCops: enable
       Include:
         - "rakelib/*.rake"
       Exclude:
@@ -18,6 +17,22 @@
 Rakefile:
   default_disabled_lint_checks:
     - '140chars'
+Gemfile:
+  required:
+    ':system_tests':
+      - gem: bolt
+        git: https://github.com/h0tw1r3/bolt.git
+        branch: h0tw1r3
+      - gem: specinfra
+        git: https://github.com/h0tw1r3/specinfra.git
+        branch: fix-lxd-run
+  overrides:
+    - gem: puppetlabs_spec_helper
+      version: '~> 7.0'
+    - gem: puppet_litmus
+      git: https://github.com/h0tw1r3/puppet_litmus.git
+      branch: h0tw1r3
+      platforms: [ 'ruby', 'x64_mingw' ]
 .gitignore:
   paths:
     - .modules/

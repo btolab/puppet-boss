@@ -9,5 +9,3 @@ fixtures:
     host_core: 'puppetlabs/host_core'
     cron_core: 'puppetlabs/cron_core'
     yumrepo_core: 'puppetlabs/yumrepo_core'
-  repositories:
-    provision: 'https://github.com/puppetlabs/provision.git'

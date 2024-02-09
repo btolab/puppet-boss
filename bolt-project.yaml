@@ -25,3 +25,7 @@ modules:
   - puppetlabs/puppet_agent
   - puppet/archive
   - h0tw1r3/sysctl
+  - name: puppet/provision
+    git: https://github.com/h0tw1r3/provision
+    ref: h0tw1r3
+    resolve: false
