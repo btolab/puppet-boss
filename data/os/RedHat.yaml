@@ -12,3 +12,10 @@ boss::profile::r10k::rugged_build_packages:
   - zlib-devel
 
 boss::profile::puppetdb::manage_dnf: true
+
+boss::profile::base::os::repos:
+  puppet:
+    description: "Puppet Repository el %{facts.os.release.major} - $basearch"
+    url: http://yum.puppetlabs.com/puppet/el/%{facts.os.release.major}/$basearch
+    key_url: http://yum.puppetlabs.com/RPM-GPG-KEY-puppet-20250406
+    key_checksum: 4d5a9c73f97235eebe8c69f728aa2efcc8e1ee02282f972efdbbbd3a430be454

@@ -7,16 +7,17 @@
 #
 # wrapper for provider types
 define boss::repository (
-  Enum['apt', 'yum'] $provider,
+  Enum['apt', 'yum', 'dnf'] $provider,
   Hash $params,
 ) {
   if $provider == 'apt' {
-    @boss::repository::apt { $title:
+    boss::repository::apt { $title:
       * => $params,
     }
+    Boss::Repository::Apt <| |> -> Package <| title != 'gpg' and title != 'ca-certificates' |>
   } else {
-    fail('not implemented')
+    boss::repository::yum { $title:
+      * => $params,
+    }
   }
-
-  Boss::Repository::Apt <| |> -> Package <| title != 'gpg' and title != 'ca-certificates' |>
 }
