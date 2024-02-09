@@ -45,6 +45,7 @@ class boss::profile::r10k (
         if $parsed['host'] {
           exec { "ssh-keyscan-${v[0]}":
             path    => ['/usr/bin', '/bin'],
+            cwd     => '/root',
             command => "mkdir -p .ssh && ssh-keyscan ${parsed['host']} >> .ssh/known_hosts",
             unless  => "ssh-keygen -F ${parsed['host']}",
           }
