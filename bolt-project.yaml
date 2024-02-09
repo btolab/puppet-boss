@@ -1,9 +1,16 @@
 ---
 name: boss
+spinner: false
+stream: true
 apply-settings:
   show_diff: true
 disable-warnings:
   - dotted_fact_name
+plugin-hooks:
+  puppet_library:
+    plugin: puppet_agent
+    stop_service: true
+    collection: 'puppet8'
 modules:
   - name: puppetlabs/stdlib
     version_requirement: '9.x'

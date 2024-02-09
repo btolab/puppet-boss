@@ -1,6 +1,5 @@
 ---
-plugin-hooks:
-  puppet_library:
-    plugin: puppet_agent
-    stop_service: true
-    collection: 'puppet8'
+inventory-config:
+  ssh:
+    native-ssh: true
+    host-key-check: false
