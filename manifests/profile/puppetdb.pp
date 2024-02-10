@@ -29,7 +29,7 @@ class boss::profile::puppetdb (
   if $manage_dnf {
     exec { 'disable-dnf-postgresql-module':
       command => '/usr/bin/env dnf module disable -d 0 -e 1 -y postgresql',
-      onlyif  => '/usr/bin/env dnf module --enabled list postgresql',
+      unless  => '/usr/bin/env dnf module --disabled list postgresql',
     }
 
     Yumrepo <| tag == 'postgresql::repo' |>
