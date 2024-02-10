@@ -19,6 +19,7 @@ task :acceptance, [:group, :tag] do |_task, args|
   end
 end
 
+Rake::Task['litmus:install_module'].clear
 namespace :litmus do
   desc "Run tests against all nodes in the litmus inventory\n(defaults: tag=nil)"
   task :acceptance, [:tag] do |_task, args|
@@ -36,5 +37,28 @@ namespace :litmus do
 
     Rake::Task['spec_prep'].invoke
     Rake::Task['litmus:install_modules_from_directory'].invoke(nil, nil, nil, !args[:resolve_dependencies])
+  end
+
+  # Install the puppet module under test on a collection of nodes
+  #
+  # @param :target_node_name [Array] nodes on which to install a puppet module for testing.
+  desc 'build the module under test and install it onto targets'
+  task :install_module, [:target_node_name, :module_repository, :ignore_dependencies] do |_task, args|
+    args.with_defaults(target_node_name: nil, module_repository: nil, ignore_dependencies: false)
+    inventory_hash = inventory_hash_from_inventory_file
+    target_nodes = find_targets(inventory_hash, args[:target_node_name])
+    if target_nodes.empty?
+      puts 'No targets found'
+      exit 0
+    end
+
+    module_tar = build_module
+    puts "Built '#{module_tar}'"
+
+    raise "Unable to find package in 'pkg/*.tar.gz'" if module_tar.nil?
+
+    install_module(inventory_hash, args[:target_node_name], module_tar, args[:module_repository], args[:ignore_dependencies])
+
+    puts "Installed '#{module_tar}' on #{args[:target_node_name]}"
   end
 end
