@@ -56,6 +56,7 @@ define boss::repository::yum (
         false => undef,
       },
       checksum_value => $key_checksum,
+      before         => Yumrepo[$title],
     }
   }
 
@@ -63,7 +64,10 @@ define boss::repository::yum (
     enabled  => $yumrepo_enabled,
     baseurl  => $final_url,
     descr    => $description,
-    gpgkey   => $gpg_filename,
+    gpgkey   => ($gpg_filename) ? {
+      /.+/    => "file://${gpg_filename}",
+      default => '0',
+    },
     gpgcheck => ($gpg_filename) ? {
       /.+/    => '1',
       default => '0',
