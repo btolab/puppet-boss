@@ -24,8 +24,7 @@ Gemfile:
         git: https://github.com/h0tw1r3/bolt.git
         branch: h0tw1r3
       - gem: specinfra
-        git: https://github.com/h0tw1r3/specinfra.git
-        branch: fix-lxd-run
+        version: '~> 2.88'
   overrides:
     - gem: puppetlabs_spec_helper
       version: '~> 7.0'

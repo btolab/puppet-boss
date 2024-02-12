@@ -40,7 +40,7 @@ group :system_tests do
   gem "puppet_litmus",         require: false, git: 'https://github.com/h0tw1r3/puppet_litmus.git', branch: 'h0tw1r3', platforms: [:ruby, :x64_mingw]
   gem "serverspec", '~> 2.41', require: false
   gem "bolt",                  require: false, git: 'https://github.com/h0tw1r3/bolt.git', branch: 'h0tw1r3'
-  gem "specinfra",             require: false, git: 'https://github.com/h0tw1r3/specinfra.git', branch: 'fix-lxd-run'
+  gem "specinfra", '~> 2.88',  require: false
 end
 group :release_prep do
   gem "puppet-strings", '~> 4.0',         require: false

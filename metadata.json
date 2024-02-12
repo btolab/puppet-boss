@@ -72,6 +72,6 @@
     }
   ],
   "pdk-version": "3.0.1",
-  "template-url": "https://github.com/h0tw1r3/pdk-templates#gem-override",
-  "template-ref": "remotes/origin/gem-override-0-g09cd2d3"
+  "template-url": "https://github.com/puppetlabs/pdk-templates#main",
+  "template-ref": "heads/main-0-g28a50c4"
 }
