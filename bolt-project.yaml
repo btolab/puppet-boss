@@ -23,7 +23,9 @@ modules:
     git: https://github.com/h0tw1r3/puppet-puppetboard
     ref: pre-release
     resolve: false
-  - puppetlabs/puppet_agent
+  - name: puppetlabs/puppet_agent
+    git: https://github.com/h0tw1r3/puppetlabs-puppet_agent
+    ref: apt-helper
   - puppet/archive
   - h0tw1r3/sysctl
   - name: puppet/provision
