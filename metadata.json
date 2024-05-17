@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "name": "puppetlabs/puppetdb",
-      "version_requirement": ">= 7.1.5 < 9.0.0"
+      "version_requirement": ">= 8.1.0 < 9.0.0"
     },
     {
       "name": "puppetlabs/stdlib",
@@ -18,7 +18,7 @@
     },
     {
       "name": "puppetlabs/firewall",
-      "version_requirement": ">= 6.0.0 < 8.0.0"
+      "version_requirement": ">= 7.0.0 < 8.0.0"
     },
     {
       "name": "puppet/puppetboard",
@@ -71,7 +71,7 @@
       "version_requirement": ">= 7.24 < 9.0.0"
     }
   ],
-  "pdk-version": "3.0.1",
+  "pdk-version": "3.1.0 (g0d3e8e8)",
   "template-url": "https://github.com/puppetlabs/pdk-templates#main",
-  "template-ref": "heads/main-0-g28a50c4"
+  "template-ref": "heads/main-0-gdd25cb0"
 }

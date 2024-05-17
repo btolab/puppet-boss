@@ -21,13 +21,9 @@ Gemfile:
   required:
     ':system_tests':
       - gem: bolt
-        git: https://github.com/h0tw1r3/bolt.git
-        branch: h0tw1r3
-      - gem: specinfra
-        version: '~> 2.88'
+        git: https://github.com/puppetlabs/bolt.git
+        branch: main
   overrides:
-    - gem: puppetlabs_spec_helper
-      version: '~> 7.0'
     - gem: puppet_litmus
       git: https://github.com/h0tw1r3/puppet_litmus.git
       branch: h0tw1r3
@@ -47,5 +43,3 @@ Gemfile:
 .pdkignore:
   paths:
     - /provision.yaml
-spec/default_facts.yml:
-  delete: true
