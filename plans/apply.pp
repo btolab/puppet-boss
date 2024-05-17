@@ -3,11 +3,12 @@ plan boss::apply (
   TargetSpec $targets,
   String     $role,
   Boolean    $noop = false,
+  Variant[String,Undef] $run_as = undef,
 ) {
-  $targets.apply_prep(_run_as => 'root')
+  $targets.apply_prep(_run_as => $run_as)
 
   get_targets($targets).each() |$target| {
-    $apply_result = apply($target, _noop => $noop, _catch_errors => true, _run_as => root) {
+    $apply_result = apply($target, _noop => $noop, _catch_errors => true, _run_as => $run_as) {
       include "boss::role::${role}"
     }
 
