@@ -48,9 +48,9 @@ class boss::profile::puppetboard (
 
   if $manage_firewall {
     firewall { '1000 accept - puppetboard':
-      dport  => 9090,
-      proto  => 'tcp',
-      action => 'accept',
+      dport => 9090,
+      proto => 'tcp',
+      jump  => 'accept',
     }
   }
 }
